@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+    <context:annotation-config/> 
+	<context:component-scan base-package="com.android.ads.manage">
+	  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="fileEncoding" value="utf-8" />
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc_usr.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${mysql.global.driverClassName}" />
+		<property name="url" value="${mysql.usr.read.url}" />
+		<property name="username" value="${mysql.usr.read.username}" />
+        <property name="password" value="${mysql.usr.read.password}" />  
+		<property name="initialSize" value="${mysql.global.initialPoolSize}" />
+		<property name="maxActive" value="${mysql.global.maxIdle}" />
+		<property name="maxIdle" value="${mysql.global.maxWait}" />
+		<property name="minIdle" value="${mysql.global.minIdle}" />
+		<!-- SQL查询,用来验证从连接池取出的连接 --> 
+		<property name="validationQuery" value="${mysql.global.validationQuery}"/>
+		<!-- 指明连接是否被空闲连接回收器(如果有)进行检验，如果检测失败，则连接将被从池中去除 --> 
+		<property name="testWhileIdle" value="${mysql.global.testWhileIdle}"/>
+		<!-- 在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. -->  
+        <property name="timeBetweenEvictionRunsMillis" value="${mysql.global.timeBetweenEvictionRunsMillis}"/>  
+		<!-- 在每次空闲连接回收器线程(如果有)运行时检查的连接数量 -->  
+        <property name="numTestsPerEvictionRun" value="${mysql.global.numTestsPerEvictionRun}"/> 
+        <!-- 1000 * 60 * 30  连接在池中保持空闲而不被空闲连接回收器线程-->  
+        <property name="minEvictableIdleTimeMillis" value="${mysql.global.minEvictableIdleTimeMillis}"/>
+	 </bean>
+	 <bean id="sessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:configLocation="classpath:mybatis-configuration.xml"
+          p:mapperLocations="classpath:mapper/*.xml"/>
+       
+	   <!-- spring与mybatis整合配置，扫描所有dao -->
+	 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+	        p:basePackage="com.ule.user.server.**.mapper"
+	        p:markerInterface="com.ule.user.server.base.mapper.Mapper"
+	        p:sqlSessionFactoryBeanName="usrSqlSessionFactory"/>
+	<!-- 激活自动代理功能 -->  
+	<aop:aspectj-autoproxy/> 
+	
+	
+	<bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>
+	
+	
+	
+	
+	
+	
+	 
+	
+	<!-- <aop:config>  
+	    <aop:aspect id="usrDataSourceAOP" ref="usrDataSourceAspect">  
+	        <aop:pointcut id="tx" expression="execution(* com.ule.user.server..dao.impl.*.*(..))"/>  
+	        <aop:before pointcut-ref="tx" method="before"/>  
+	    </aop:aspect>  
+	</aop:config>   -->
+	
+	<!-- 配置数据库注解aop -->
+	<!-- <bean id="usrTransactionManager"
+	        class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+	        p:dataSource-ref="usrDataSource"/>
+	        
+	<tx:annotation-driven /> -->
+	  
+	 <!--配置事务的传播特性 -->  
+    <!-- <tx:advice id="usrtxAdvice" transaction-manager="usrTransactionManager">  
+        <tx:attributes>  
+            对增、删、改方法进行事务支持
+            <tx:method name="create*" propagation="REQUIRED" rollback-for="Exception" />  
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />  
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />  
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="Exception" />  
+            对查找方法进行只读事务  
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="load*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />  
+            对其它方法进行只读事务  
+            <tx:method name="*" propagation="SUPPORTS" read-only="true" />  
+        </tx:attributes>  
+    </tx:advice>   -->
+    <!--那些类的哪些方法参与事务 -->  
+   <!--  <aop:config>  
+        <aop:advisor  
+            pointcut="execution(* com.ule.user.server..service.*.*(..))" 
+            advice-ref="usrtxAdvice" />  
+    </aop:config> -->
+</beans>
