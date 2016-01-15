@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.android.ads.manage.dao.IAdvertisementDao">
+    <resultMap type="com.android.ads.manage.model.Advertisement" id="advertisement">
+		<id column="id" property="id" />
+		<id column="appPackage" property="appPackage" />
+		<result column="advertiser" property="advertiser" />
+		<result column="advertKey" property="advertKey" />
+		<result column="advertType" property="advertType" />
+		<result column="advertStatus" property="advertStatus" />
+		<result column="createTime" property="createTime" />
+		<result column="createUser" property="createUser" />
+		<result column="updateTime" property="updateTime" />
+		<result column="updateUser" property="updateUser" />
+		<result column="description" property="description" />
+	</resultMap>
+	
+	<insert id="saveAdvertisement" useGeneratedKeys="true" 
+		parameterType="com.android.ads.manage.model.Advertisement" keyProperty="id">
+		INSERT INTO advertisement
+            (appPackage,
+             advertiser,
+             advertKey,
+             advertType,
+             advertStatus,
+             createTime,
+             createUser,
+             updateTime,
+             updateUser,
+             description)
+		VALUES 
+			(#{appPackage},
+	        #{advertiser},
+	        #{advertKey},
+	        #{advertType},
+	        #{advertStatus},
+	        now(),
+	        #{createUser},
+	        now(),
+	        #{updateUser},
+	        #{description});
+    </insert>
+    <select id="pageAdvertisement" resultMap="advertisement">
+        select * from advertisement where 1 = 1 
+        <if test="appPackage != null and appPackage != ''">  
+              AND appPackage like concat('%',#{appPackage},'%')
+        </if>
+        <if test="advertiser != null and advertiser != ''">  
+              AND advertiser = #{advertiser}
+        </if>
+        <if test="advertType != null and advertType != 0">  
+              AND advertType = #{advertType}
+        </if>
+         order by updateTime desc 
+    	 LIMIT #{offset, jdbcType=INTEGER}, #{pageSize, jdbcType=INTEGER};
+    </select>
+    
+    <select id="countAdvertisement" resultType="long">
+		SELECT count(1) FROM advertisement where 1 = 1
+		<if test="appPackage != null and appPackage != ''">  
+              AND appPackage like concat('%',#{appPackage},'%')
+        </if>
+        <if test="advertiser != null and advertiser != ''">  
+              AND advertiser = #{advertiser}
+        </if>
+        <if test="advertType != null and advertType != 0">  
+              AND advertType = #{advertType};
+        </if>
+    </select>
+	
+</mapper>
