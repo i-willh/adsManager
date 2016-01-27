@@ -23,15 +23,15 @@ public class AdvertisementService implements IAdvertisementService {
 
 	@Override
 	public List<Advertisement> pageAdvertisement(String appPackage,
-			String advertiser, int advertType, int offset, int pageSize)
+			String advertiser, int advertType, int userId, int offset, int pageSize)
 			throws Exception {
-		return advertisementDao.pageAdvertisement(appPackage, advertiser, advertType, offset, pageSize);
+		return advertisementDao.pageAdvertisement(appPackage, advertiser, advertType, userId, offset, pageSize);
 	}
 
 	@Override
 	public long countAdvertisement(String appPackage, String advertiser,
-			int advertType) throws Exception {
-		return advertisementDao.countAdvertisement(appPackage, advertiser, advertType);
+			int advertType, int userId) throws Exception {
+		return advertisementDao.countAdvertisement(appPackage, advertiser, advertType, userId);
 	}
 
 }

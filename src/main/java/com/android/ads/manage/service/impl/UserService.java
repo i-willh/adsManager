@@ -18,5 +18,9 @@ public class UserService implements IUserService {
 	public int saveUser(User user) throws Exception {
 		return userDao.saveUser(user);
 	}
+	
+	public User getUserByEmail(String email) throws Exception {
+		return userDao.getUserByEmail(email);
+	}
 
 }

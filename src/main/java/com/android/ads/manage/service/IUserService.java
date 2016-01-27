@@ -6,4 +6,6 @@ public interface IUserService {
 
 	public int saveUser(User user) throws Exception;
 	
+	public User getUserByEmail(String email) throws Exception;
+	
 }

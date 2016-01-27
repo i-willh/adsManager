@@ -25,5 +25,25 @@
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".html"/>
-    </bean> 
+    </bean>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 需拦截的地址 -->
+            <!-- 一级目录 -->
+            <mvc:mapping path="/*.do" />
+            <mvc:mapping path="/*.html" />
+
+            <!-- 二级目录 -->
+            <mvc:mapping path="/*/*.do" />
+            <mvc:mapping path="/*/*.html" />
+            <!-- 需排除拦截的地址 -->
+            <mvc:exclude-mapping path="/signin.html"/>
+            <mvc:exclude-mapping path="/signup.html"/>
+            <mvc:exclude-mapping path="/user/singin.do"/>
+            <mvc:exclude-mapping path="/user/singup.do"/>
+            <mvc:exclude-mapping path="/user/signout.do"/>
+            <bean class="com.android.ads.manage.interceptor.SecurityInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

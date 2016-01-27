@@ -53,6 +53,7 @@
         <if test="advertType != null and advertType != 0">  
               AND advertType = #{advertType}
         </if>
+        	  AND createUser = #{userId}
          order by updateTime desc 
     	 LIMIT #{offset, jdbcType=INTEGER}, #{pageSize, jdbcType=INTEGER};
     </select>
@@ -65,9 +66,10 @@
         <if test="advertiser != null and advertiser != ''">  
               AND advertiser = #{advertiser}
         </if>
-        <if test="advertType != null and advertType != 0">  
+        <if test="advertType != null and advertType != 0">
               AND advertType = #{advertType};
         </if>
+        	  AND createUser = #{userId}
     </select>
 	
 </mapper>

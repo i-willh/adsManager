@@ -12,7 +12,7 @@ public interface IAdvertisementDao {
 	
 	public int saveAdvertisement(Advertisement advertisement) throws Exception;
 
-	public List<Advertisement> pageAdvertisement(@Param("appPackage") String appPackage, @Param("advertiser") String advertiser, @Param("advertType") int advertType, @Param("offset") int offset, @Param("pageSize") int pageSize) throws Exception;
+	public List<Advertisement> pageAdvertisement(@Param("appPackage") String appPackage, @Param("advertiser") String advertiser, @Param("advertType") int advertType, @Param("userId") int userId, @Param("offset") int offset, @Param("pageSize") int pageSize) throws Exception;
 	
-	public long countAdvertisement(@Param("appPackage") String appPackage, @Param("advertiser") String advertiser, @Param("advertType") int advertType) throws Exception;
+	public long countAdvertisement(@Param("appPackage") String appPackage, @Param("advertiser") String advertiser, @Param("advertType") int advertType, @Param("userId") int userId) throws Exception;
 }

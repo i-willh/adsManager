@@ -48,111 +48,20 @@
                 <li class="hidden-phone">
                     <input class="search" type="text" />
                 </li>
-                <li class="notification-dropdown hidden-phone">
-                    <a href="#" class="trigger">
-                        <i class="icon-warning-sign"></i>
-                        <span class="count">8</span>
-                    </a>
-                    <div class="pop-dialog">
-                        <div class="pointer right">
-                            <div class="arrow"></div>
-                            <div class="arrow_border"></div>
-                        </div>
-                        <div class="body">
-                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                            <div class="notifications">
-                                <h3>You have 6 new notifications</h3>
-                                <a href="#" class="item">
-                                    <i class="icon-signin"></i> New user registration
-                                    <span class="time"><i class="icon-time"></i> 13 min.</span>
-                                </a>
-                                <a href="#" class="item">
-                                    <i class="icon-signin"></i> New user registration
-                                    <span class="time"><i class="icon-time"></i> 18 min.</span>
-                                </a>
-                                <a href="#" class="item">
-                                    <i class="icon-envelope-alt"></i> New message from Alejandra
-                                    <span class="time"><i class="icon-time"></i> 28 min.</span>
-                                </a>
-                                <a href="#" class="item">
-                                    <i class="icon-signin"></i> New user registration
-                                    <span class="time"><i class="icon-time"></i> 49 min.</span>
-                                </a>
-                                <a href="#" class="item">
-                                    <i class="icon-download-alt"></i> New order placed
-                                    <span class="time"><i class="icon-time"></i> 1 day.</span>
-                                </a>
-                                <div class="footer">
-                                    <a href="#" class="logout">View all notifications</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="notification-dropdown hidden-phone">
-                    <a href="#" class="trigger">
-                        <i class="icon-envelope-alt"></i>
-                    </a>
-                    <div class="pop-dialog">
-                        <div class="pointer right">
-                            <div class="arrow"></div>
-                            <div class="arrow_border"></div>
-                        </div>
-                        <div class="body">
-                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                            <div class="messages">
-                                <a href="#" class="item">
-                                    <img src="../img/contact-img.png" class="display" />
-                                    <div class="name">Alejandra Galván</div>
-                                    <div class="msg">
-                                        There are many variations of available, but the majority have suffered alterations.
-                                    </div>
-                                    <span class="time"><i class="icon-time"></i> 13 min.</span>
-                                </a>
-                                <a href="#" class="item">
-                                    <img src="../img/contact-img2.png" class="display" />
-                                    <div class="name">Alejandra Galván</div>
-                                    <div class="msg">
-                                        There are many variations of available, have suffered alterations.
-                                    </div>
-                                    <span class="time"><i class="icon-time"></i> 26 min.</span>
-                                </a>
-                                <a href="#" class="item last">
-                                    <img src="../img/contact-img.png" class="display" />
-                                    <div class="name">Alejandra Galván</div>
-                                    <div class="msg">
-                                        There are many variations of available, but the majority have suffered alterations.
-                                    </div>
-                                    <span class="time"><i class="icon-time"></i> 48 min.</span>
-                                </a>
-                                <div class="footer">
-                                    <a href="#" class="logout">View all messages</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
-                        Your account
+                        <span id="email"></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="personal-info.html">Personal info</a></li>
-                        <li><a href="#">Account settings</a></li>
-                        <li><a href="#">Billing</a></li>
-                        <li><a href="#">Export your data</a></li>
-                        <li><a href="#">Send feedback</a></li>
+                        <li><a href="personal-info.html">个人信息</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="#">意见反馈</a></li>
                     </ul>
                 </li>
                 <li class="settings hidden-phone">
-                    <a href="personal-info.html" role="button">
-                        <i class="icon-cog"></i>
-                    </a>
-                </li>
-                <li class="settings hidden-phone">
-                    <a href="signin.html" role="button">
-                        <i class="icon-share-alt"></i>
+                    <a href="../user/signout.do" role="button" data-toggle="tooltip" data-placement="bottom" title="注销">
+                        <i class="icon-off"></i>
                     </a>
                 </li>
             </ul>            
@@ -166,13 +75,13 @@
             <li>                
                 <a href="index.html">
                     <i class="icon-home"></i>
-                    <span>Home</span>
+                    <span>首页</span>
                 </a>
             </li>            
             <li>
                 <a href="chart-showcase.html">
                     <i class="icon-signal"></i>
-                    <span>Charts</span>
+                    <span>导航</span>
                 </a>
             </li>
             <li class="active">
@@ -181,74 +90,20 @@
                     <div class="arrow_border"></div>
                 </div>
                 <a class="dropdown-toggle" href="#">
-                    <i class="icon-group"></i>
-                    <span>Users</span>
+                    <i class="icon-dashboard"></i>
+                    <span>管理广告</span>
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="active submenu">
-                    <li><a href="user-list.html">User list</a></li>
-                    <li><a href="new-user.html" class="active">New user form</a></li>
-                    <li><a href="user-profile.html">User profile</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
-                    <i class="icon-edit"></i>
-                    <span>Forms</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="form-showcase.html">Form showcase</a></li>
-                    <li><a href="form-wizard.html">Form wizard</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="icon-picture"></i>
-                    <span>Gallery</span>
-                </a>
-            </li>
-            <li>
-                <a href="calendar.html">
-                    <i class="icon-calendar-empty"></i>
-                    <span>Calendar</span>
-                </a>
-            </li>
-            <li>
-                <a href="tables.html">
-                    <i class="icon-th-large"></i>
-                    <span>Tables</span>
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-toggle ui-elements" href="#">
-                    <i class="icon-code-fork"></i>
-                    <span>UI Elements</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="ui-elements.html">UI Elements</a></li>
-                    <li><a href="icons.html">Icons</a></li>
+                    <li><a href="ads-list.do">广告列表</a></li>
+                    <li><a href="new-ads.do" class="active">新增广告</a></li>
                 </ul>
             </li>
             <li>
                 <a href="personal-info.html">
                     <i class="icon-cog"></i>
-                    <span>My Info</span>
+                    <span>个人信息</span>
                 </a>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
-                    <i class="icon-share-alt"></i>
-                    <span>Extras</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="code-editor.html">Code editor</a></li>
-                    <li><a href="grids.html">Grids</a></li>
-                    <li><a href="signin.html">Sign in</a></li>
-                    <li><a href="signup.html">Sign up</a></li>
-                </ul>
             </li>
         </ul>
     </div>
@@ -278,7 +133,13 @@
                     <!-- left column -->
                     <div class="span9 with-sidebar">
                         <div class="container">
-                            <form class="new_user_form normal-input" method="post" action="saveAds.do">
+                        	<div class="alert alert-success hide">
+					            <i class="icon-ok-sign"></i> 登陆成功，跳转中...
+					        </div>
+					        <div class="alert alert-error hide">
+			                    <i class="icon-remove-sign"></i>登陆失败，请确认邮箱和密码.
+			                </div>
+                            <form id="form" class="new_user_form normal-input" method="post" action="saveAds.do">
                                 <div class="span12 field-box control-group">
                                     <label class="control-label">应用包名:</label>
                                     <div class="controls">
@@ -320,9 +181,9 @@
                                     <span class="charactersleft">广告商或广告类型无法满足需求，请联系：insist_wait@163.com</span>
                                 </div>
                                 <div class="span11 field-box actions">
-                                    <input type="submit" class="btn-glow primary" value="新增广告" />
+                                    <input type="submit" class="btn-glow primary" data-loading-text="正在新增，稍后..." value="新增广告" />
                                     <span>OR</span>
-                                    <input type="reset" value="重置" class="reset" />
+                                    <input type="reset" value="重 置" class="reset" />
                                 </div>
                             </form>
                         </div>
@@ -331,16 +192,18 @@
                     <!-- side right column -->
                     <div class="span3 form-sidebar pull-right">
                         <div class="btn-group toggle-inputs hidden-tablet">
-                            <button class="glow left active" data-input="inline">INLINE INPUTS</button>
-                            <button class="glow right" data-input="normal">NORMAL INPUTS</button>
+                            <!-- <button class="glow left active" data-input="inline">INLINE INPUTS</button>
+                            <button class="glow right" data-input="normal">NORMAL INPUTS</button> -->
+                          	<h6> 友情提示：</h6>
                         </div>
                         <div class="alert alert-info hidden-tablet">
                             <i class="icon-lightbulb pull-left"></i>
-                            Click above to see difference between inline and normal inputs on a form
+                           	如果当前广告商或者广告类型无法满足你目前的需求，请联系系统管理员寻求帮助.
+                           	<a href="mailto:insist_wait@163.com">insist_wait@163.com</a>
                         </div>                        
-                        <h6>Sidebar text for instructions</h6>
-                        <p>Add multiple users at once</p>
-                        <p>Choose one of the following file types:</p>
+                        <h6>链接导航：</h6>
+                        <!-- <p>Add multiple users at once</p>
+                        <p>Choose one of the following file types:</p> -->
                         <ul>
                             <li><a href="#">Upload a vCard file</a></li>
                             <li><a href="#">Import from a CSV file</a></li>
@@ -358,56 +221,65 @@
     <script src="../js/jquery-latest.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/common.js"></script>
 
     <script type="text/javascript">
         $(function () {
-            // toggle form between inline and normal inputs
-            var $buttons = $(".toggle-inputs button");
-            var $form = $("form.new_user_form");
+            var loading;
+            $("#form").on("submit", function(e) {
+				e.preventDefault();
+				 var $form = $(e.target);
+				/* $.post($form.attr('action') + "?t=" + parseInt(new Date().getTime()/1000), $form.serialize(), function(result, status) {
+	                console.log(result);
+	                if(result.returnCode == "200") {
+                		$(".alert").eq(0).fadeIn();
+	                	window.setTimeout(function() {
+	                		$(".alert").eq(0).fadeOut();
+	                		window.location.href = "ads-list.do";
+	                	}, 1000);
+	                } else {
+	                	$(".alert").eq(1).fadeIn();
+	                	window.setTimeout(function() {
+	                		$(".alert").eq(1).fadeOut();
+	                	}, 3000);
+	                }
+	            }, 'json'); */
+	             loading = $("input[type='submit']").button('loading');
+				 $.ajax({
+					 url: $form.attr('action'),
+					 type: 'POST',
+					 data: $form.serialize(),
+					 dataType: 'json',
+					 async: true,
+					 timeout: 5000,
+					 error: function(){
+					 	console.info('请求错误，用户未登陆');
+					 },
+					 success: function(result){
+		                 if(result.returnCode == "200") {
+	                		 $(".alert").eq(0).fadeIn();
+		                	 window.setTimeout(function() {
+		                	 	 $(".alert").eq(0).fadeOut();
+		                		 window.location.href = "ads-list.do";
+		                	 }, 1000);
+		                 } else {
+		                	 $(".alert").eq(1).fadeIn();
+		                	 window.setTimeout(function() {
+		                		 $(".alert").eq(1).fadeOut();
+		                	 }, 3000);
+		                 }
+					  },
+					  complete: function(XMLHttpRequest, textStatus) {
+						  if(textStatus == "parsererror") {
+							  window.location.href = "../signin.html";
+						  }
+					  }
+				 });
+			});
 
-            $buttons.click(function () {
-                var mode = $(this).data("input");
-                $buttons.removeClass("active");
-                $(this).addClass("active");
-
-                if (mode === "inline") {
-                    $form.addClass("inline-input");
-                } else {
-                    $form.removeClass("inline-input");
-                }
-            });
-            
-            /* $("#appPackage").keydown(function(e) {
-            	var keynum = window.event ? e.keyCode : e.which;
-            	var $this = $(this);
-            	console.info(keynum);
-            	if(!((keynum >= 48 && keynum <= 57) || (keynum >= 96 && keynum <= 105) 
-            			|| keynum == 110 || keynum == 190 || keynum == 8 || keynum == 13 
-            			|| (keynum == 9 && $this.val() != "")
-            			|| (keynum >= 65 && keynum <= 90))) {
-            		$this.css("border-color", "#e9322d");
-            		setTimeout(function() {
-            			$this.css("border-color", "#dee3ea");
-            		},500)
-            		event.preventDefault();
-           		    return false;
-            	}
-            }); */
-            
-           /*  $("form input[type='submit']").click(function() {
-           		var options = {
-                        url: 'manage/saveAdvertisement.do',
-                        type: 'post',
-                        dataType: 'json',
-                        data: $form.serialize(),
-                        success: function (data) {
-                            if (data.length > 0)
-                                $("#responseText").text(data);
-                        }
-                    };
-                    $.ajax(options);
-            }); */
-            
+			$(document).ajaxComplete(function(event, jqXHR, options){
+				loading.button('reset');
+			});
         });
     </script>
 
